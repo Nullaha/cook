@@ -1,5 +1,5 @@
 <template>
-  <p>upload</p>
+  <p>+</p>
 </template>
 
 
