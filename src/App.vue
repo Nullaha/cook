@@ -5,8 +5,12 @@
 </script>
 
 <template>
-  <!-- <HelloWorld msg="Hello Vue 3 + Vite" /> -->
-  <router-view />
+<div class="text-center px-4">
+
+  <Menu/>
+    <!-- <HelloWorld msg="Hello Vue 3 + Vite" /> -->
+    <router-view />
+</div>
 </template>
 
 
