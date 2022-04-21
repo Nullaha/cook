@@ -10,6 +10,11 @@ const routes = [
         component: () =>  import('../views/Home.vue') 
     },
     {
+        path: '/details',
+        name: '详情',
+        component: () =>  import('../views/Details.vue') 
+    },
+    {
         path: '/upload',
         name: '上传',
         component: () => import('../views/Upload.vue') 

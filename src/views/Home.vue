@@ -5,7 +5,8 @@ import recipeData from "../data/recipes.json";
 const recipe = ref(recipeData); //响应式
 let searchText = ref("");
 const suggestRecipe = ref([]); //搜索建议
-const isSearch = ref(false)
+
+const isSearch = ref(false);
 
 //computed
 const displayedRecipe = computed(() => {
@@ -17,16 +18,11 @@ const displayedRecipe = computed(() => {
 
 //methods
 function focusDiv() {
-  console.log("focus");
   getSearchSuggest(searchText.value);
-
-
-  isSearch.value = true
-
+  isSearch.value = true;
 }
 function blurDiv() {
-  console.log('blur-11111111111111111111');
-  isSearch.value = false
+  isSearch.value = false;
 }
 function getSearchSuggest(text) {
   //根据食材匹配
@@ -48,45 +44,43 @@ function getSearchSuggest(text) {
     return item.name.indexOf(text) > -1;
   });
 }
-function clickSuggestLi(e){
-  console.log('clicksuggestul')
-  searchText.value = item.name
-  // console.log(searchText.value)
-  // console.log(item)
-  // suggestRecipe.value = []
-  // suggestRecipe.value.push(item)
+function clickSuggestLi(item, e) {
+  // e.preventDefault()
+  searchText.value = item.name;
+  isSearch.value = false;
+
+  suggestRecipe.value = [];
+  suggestRecipe.value.push(item);
 }
 //watch
 watchEffect(() => {
-  // this.focusDiv()
-  // handle
-  // console.log(searchText.value);
   getSearchSuggest(searchText.value);
 });
 </script>
 <template>
   <p>home</p>
-  <input type="text" placeholder="输入菜名" v-model="searchText" class="placeholder:text-center" @focus="focusDiv()"
-    @blur="blurDiv()" />
-  <ul v-show="isSearch" >
-    <li class="cursor-pointer hover:text-red" v-for="(item, i) in suggestRecipe" :value="item.name" :key="i" @click="clickSuggestLi(item)">
-      {{ item.name }}
-    </li>
-  </ul>
+  <div style="width:180px;display:inline-block">
+    <input type="text" placeholder="输入菜名" class="placeholder:text-center"  v-model="searchText" @focus="focusDiv()"
+      @blur="blurDiv()" />
+    <ul v-show="isSearch" class="searchSuggestUl">
+      <li v-for="(item, i) in suggestRecipe" :value="item.name" :key="i" class="cursor-pointer hover:text-red"
+        @mousedown.left="clickSuggestLi(item, $event)">
+        {{ item.name }}
+      </li>
+    </ul>
+
+  </div>
 
   <div v-show="suggestRecipe.length && !isSearch" m="5">
-    <Dish v-for="(item, i) in suggestRecipe" :key="i">
+    <Dish v-for="(item, i) in suggestRecipe" :key="i" :dish="item">
       {{ item.name }}
     </Dish>
   </div>
   <div v-show="!searchText.trim() && !isSearch" m="5">
-    <Dish v-for="(item, i) in displayedRecipe" :key="i">
+    <Dish v-for="(item, i) in displayedRecipe" :key="i" :dish="item">
       {{ item.name }}
     </Dish>
   </div>
-
-
-
 
   <!-- <el-button>anni</el-button>
   <button m="t-4" bg="green-600">unocss</button> -->
