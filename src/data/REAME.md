@@ -7,7 +7,7 @@ recipes.js
 
 csv - json
 recipes.csv
-name,stuff,maybeStuff?,tools,diff?,methods?,photo?,link?,type?,
+uuid,name,stuff,maybeStuff?,tools,diff?,methods?,photo?,link?,type?,
 名字,
 
 

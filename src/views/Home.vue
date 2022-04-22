@@ -1,12 +1,24 @@
 <script setup>
-import { computed, watch, watchEffect } from "@vue/runtime-core";
+import { computed, onMounted, watch, watchEffect } from "@vue/runtime-core";
 import recipeData from "../data/recipes.json";
+import { getRecipeAPI } from "../api/home";
 //变量
-const recipe = ref(recipeData); //响应式
+const recipe = ref([]); //响应式
 let searchText = ref("");
 const suggestRecipe = ref([]); //搜索建议
 
 const isSearch = ref(false);
+
+
+//
+onMounted(()=>{
+  getRecipeAPI().then(res=>{
+    console.log(res);
+    recipe.value = res.data;
+    
+  })
+})
+
 
 //computed
 const displayedRecipe = computed(() => {

@@ -12,7 +12,10 @@
     function jumpDetails(){
         console.log(props.dish.name);
         router.push({
-            name:'/details',
+            path:'/details',
+            query:{
+                id:props.dish.uuid
+            }
         })
     }
 </script>

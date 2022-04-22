@@ -2,6 +2,7 @@
 import fs from 'fs'
 import path from 'path'
 import consola from 'consola'
+import { v4 as uuidv4 } from 'uuid';
 
 
 const __dirname = path.resolve()
@@ -23,6 +24,7 @@ function run(){
             const attrs = line.split(',')
             const stuff = attrs[1].trim().split(sep)
             recipeJson.push({
+                uuid:uuidv4(),
                 name:attrs[0].trim(),
                 stuff,
                 tools:attrs[2].trim(),
