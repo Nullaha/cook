@@ -70,7 +70,7 @@ watchEffect(() => {
 });
 </script>
 <template>
-  <p>home</p>
+  <span> <div i-mdi-arrow-u-left-top class="menu-btn">fff</div>home</span>
   <div style="width:180px;display:inline-block">
     <input type="text" placeholder="输入菜名" class="placeholder:text-center"  v-model="searchText" @focus="focusDiv()"
       @blur="blurDiv()" />

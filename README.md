@@ -19,9 +19,11 @@ This template should help get you started developing with Vue 3 in Vite. The tem
     ✅ 默认显示100个菜名    
         --点击菜名-- 显示详情
     
-   
+        如果是点击的搜索后的菜名跳到details页，要可以返回  （导航守卫？）
+        home和detail放一页好了
 
 ----upload----
       +
       --点击+-- (x      下一步)  菜谱名称
       --点击x-- (+)
+      --提交成功后，清空表单数据---
