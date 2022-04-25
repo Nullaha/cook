@@ -1,27 +1,19 @@
 <script setup>
     import { useRouter, useRoute } from 'vue-router'
-    const router =useRouter()
-    const route = useRoute()
+
 
     const props = defineProps({
-        dish:Object,
+        // dish:Object,
+        // path:String,
+        active:Boolean,
     })
 
-
-    //
-    function jumpDetails(){
-        console.log(props.dish.name);
-        router.push({
-            path:'/details',
-            query:{
-                id:props.dish.uuid
-            }
-        })
-    }
 </script>
 <template>
     <span class="tag" p='x-2'
-    border="green " @click="jumpDetails()"
+        border="green"
+        :bg="active?'red-500 opacity-90' :''"
+        :text="active ? 'red-100' : ''"
     >
         <slot />
     </span>

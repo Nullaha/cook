@@ -7,12 +7,19 @@ const routes = [
     {
         path: '/home',
         name: '首页',
-        component: () =>  import('../views/Home.vue') 
+        component: () =>  import('../views/Home.vue') ,
+        children:[
+            // {
+            //     path: 'details',
+            //     // name: '详情',
+            //     component: () =>  import('../views/Details.vue') 
+            // },
+        ]
     },
     {
-        path: '/details',
-        name: '详情',
-        component: () =>  import('../views/Details.vue') 
+        path: '/search',
+        name: '查询',
+        component: () => import('../views/Search.vue')
     },
     {
         path: '/upload',
@@ -20,11 +27,11 @@ const routes = [
         component: () => import('../views/Upload.vue') 
     },
     {
-        path: '/search',
-        name: '查询',
-        component: () => import('../views/Search.vue')
+        path: '/profile',
+        name: '我的',
+        component: () => import('../views/Profile.vue') 
     },
-    
+
 ]
 
 const router = createRouter({
