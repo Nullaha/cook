@@ -47,6 +47,7 @@ export default defineConfig({
         ['upload-input',''],
         ['searchSuggestUl','m-t-0 p-x-5 list-none text-gray-600 opacity-75'],
         ['commonUl','m-t-0 p-x-5 list-none'],
+        // ['',''],
       ],
       // presets: [],
       // rules:[

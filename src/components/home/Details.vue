@@ -11,9 +11,17 @@ const props = defineProps({
         <h2>{{ details.name }}</h2>
         <div class="item">
             <span class="item-name">用料</span>
-            <ul class="commonUl">
+            <table m="b-4 x-4">
+                <tbody>
+                    <tr v-for="(item, i) in details.stuff" :key="i" style="border-bottom: 1px solid #f3f4f5;">
+                        <td style="width:200px;">{{item}}</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <ul class="commonUl">
                 <li v-for="(item, i) in details.stuff" :key="i">{{ item }}</li>
-            </ul>
+            </ul> -->
         </div>
         <div class="item">
             <span class="item-name">做法</span>

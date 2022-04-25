@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onMounted, watch, watchEffect } from "@vue/runtime-core";
+import Login from "../components/profile/Login.vue";
 
 //变量
 const recipeCount = ref(2);
@@ -22,23 +23,30 @@ onMounted(() => {
 //methods
 
 //watch
-watchEffect(() => { });
+
 </script>
 <template>
-    <div id="usr-profile">
-        <div class="info">
-            <h1>2333</h1>
-        </div>
-        <!-- <div class="pic">s
-          <img width="80"  src="../data/WA2.png" alt="">
-      </div> -->
+    <div v-if="true">
+        <Login>
+
+        </Login>
     </div>
-    <div>
-        <span style="text-decoration: underline; cursor: pointer">菜谱{{ recipeCount }}</span>
-        <div m="5">
-            <Dish v-for="(item, i) in recipe" :key="i" :dish="item" path="/profile/editRecipe">
-                {{ item.name }}
-            </Dish>
+    <div v-else>
+        <div id="usr-profile">
+            <div class="info">
+                <h1>2333</h1>
+            </div>
+            <!-- <div class="pic">s
+            <img width="80"  src="../data/WA2.png" alt="">
+        </div> -->
+        </div>
+        <div>
+            <span style="text-decoration: underline; cursor: pointer">菜谱{{ recipeCount }}</span>
+            <div m="5">
+                <Dish v-for="(item, i) in recipe" :key="i" :dish="item" path="/profile/editRecipe">
+                    {{ item.name }}
+                </Dish>
+            </div>
         </div>
     </div>
 </template>

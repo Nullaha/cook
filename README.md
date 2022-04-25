@@ -23,6 +23,8 @@ This template should help get you started developing with Vue 3 in Vite. The tem
                 如果 用户向 input 框中输入文字后，下拉选项中的文字显示与之匹配的信息。 
     ✅ 默认显示20个菜名    
     ✅    --点击菜名功能-- 显示/隐藏 详情
+    ----详情----
+        用料：table
 ----upload----
       +
       --点击+-- (x      下一步)  菜谱名称

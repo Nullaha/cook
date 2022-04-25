@@ -34,8 +34,6 @@ onBeforeRouteLeave((to, from) => {
   // // 取消导航并停留在同一页面上
   // if (!answer) return false
 
-
-
 })
 
 
@@ -51,13 +49,18 @@ const displayedRecipe = computed(() => {
 function focusDiv() {
   getSearchSuggest(searchText.value);
   isSearch.value = true;
+
+  details.value = []
+  curRecipeId.value = ''
+  toggleRecipe()
+
 }
 function blurDiv() {
   isSearch.value = false;
 }
 //获取搜索建议菜谱
 function getSearchSuggest(text) {
-  debugger
+
   //根据食材匹配
   // suggestRecipe.value = recipe.value.filter((item)=>{
   //   if(text.trim()==''){
@@ -89,7 +92,7 @@ function clickSuggestLi(item, e) {
 
 //点击菜谱
 function toggleRecipe(id) {
-  if (curRecipeId.value && curRecipeId.value == id) {
+  if (curRecipeId.value && id && curRecipeId.value == id) {
     curRecipeId.value = ''
     details.value = []
     return
@@ -114,7 +117,7 @@ watchEffect(() => {
 })
 </script>
 <template>
-  <p>home</p>
+  <!-- <p>home</p> -->
   <div style="width:180px;display:inline-block">
     <input type="text" placeholder="输入菜名" class="placeholder:text-center" v-model="searchText" @focus="focusDiv()"
       @blur="blurDiv()" />
@@ -126,13 +129,13 @@ watchEffect(() => {
     </ul>
   </div>
 
-  <div v-show="suggestRecipe.length && !isSearch" m="5">
+  <div v-show="suggestRecipe.length && !isSearch" m="5" >
     <Dish v-for="(item, i) in suggestRecipe" :key="i" 
       :active="curRecipeId == item.uuid" @click="toggleRecipe(item.uuid)">
       {{ item.name }}
     </Dish>
   </div>
-  <div v-show="!searchText.trim() && !isSearch" m="5">
+  <div v-show="!searchText.trim() && !isSearch" m="5" >
     <Dish v-for="(item, i) in displayedRecipe" :key="i"
       :active="curRecipeId == item.uuid" @click="toggleRecipe(item.uuid)">
       {{ item.name }}
