@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, watch, watchEffect } from "@vue/runtime-core";
-import Login from "../components/profile/Login.vue";
+// import Login from "../components/Login.vue";
 
 //变量
 const recipeCount = ref(2);
@@ -26,12 +26,7 @@ onMounted(() => {
 
 </script>
 <template>
-    <div v-if="true">
-        <Login>
-
-        </Login>
-    </div>
-    <div v-else>
+    <div>
         <div id="usr-profile">
             <div class="info">
                 <h1>2333</h1>
