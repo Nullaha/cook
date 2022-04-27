@@ -30,3 +30,8 @@ This template should help get you started developing with Vue 3 in Vite. The tem
       --点击+-- (x      下一步)  菜谱名称
       --点击x-- (+)
       --提交成功后，清空表单数据---
+
+
+
++ 参考：
+    + pinia  https://juejin.cn/post/7078281612013764616
