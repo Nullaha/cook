@@ -6,3 +6,14 @@ export function getRecipeAPI(){
         methods:'get',
     })
 }
+
+export function getRecipeDetailsAPI(id){
+    
+    return request({
+        url:'/recipe/details',
+        params:{
+            id,
+        },
+        method:'get',
+    })
+}

@@ -1,5 +1,5 @@
 <script setup>
-import {uploadRecipeAPI} from '../api/upload'
+import {uploadRecipeAPI} from '../api/user'
   //变量
   const uploadForm = ref(null)
   const noUploadIng = ref(true)
