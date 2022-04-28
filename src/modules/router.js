@@ -1,4 +1,7 @@
 import {createRouter,createWebHistory} from 'vue-router'
+import { Session } from '../util/cache'
+
+
 const routes = [
     {
         path: '/',
@@ -51,29 +54,30 @@ const router = createRouter({
     routes,
 })
 
+
 //登录鉴权
-// router.beforeEach((to, from, next) => {
-//     document.title=to.meta.title //设置当前页的title
-//     if (to.matched.some(record => record.meta.auth)) {
-//       if (localStorage.getItem('access_token')) {
-//           next()
-//       } else {
-//         if (to.name === 'Login') {//防止next无限循环的问题
-//           next();
-//           return
-//         }
-//         next({
-//           path: '/Login',
-//           query: {
-//             redirect: to.fullPath
-//           }
-//         });
-//       }
-//     } else {
-//       next()
-//     }
-  
-//   })
+router.beforeEach((to, from, next) => {
+    debugger
+    if (to.matched.some(record => record.meta.requireLogin)) { // 判断该路由是否需要登录权限
+      if (Session.get('token')) { // 判断当前用户是否登录
+          next()
+      } else {
+        if (to.name === 'Login') {//防止next无限循环的问题
+          next();
+          return
+        }
+        next({
+          path: '/login',
+          query: {
+            redirect: to.fullPath
+          }
+        });
+      }
+    } else {
+      next()
+    }
+  })
+
   
 
 export default router

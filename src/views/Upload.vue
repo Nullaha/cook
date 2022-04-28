@@ -1,5 +1,21 @@
 <script setup>
 import {uploadRecipeAPI} from '../api/user'
+
+import { mainStore } from '../store';
+import { storeToRefs } from 'pinia';
+const store = mainStore()
+// let {msg,count} = storeToRefs(store)
+// const addOne =()=>{
+//   // store.$patch({
+//   //   count:store.count+2
+//   // })
+//   store.changeState()
+// }
+  
+
+
+
+
   //变量
   const uploadForm = ref(null)
   const noUploadIng = ref(true)
@@ -9,8 +25,6 @@ import {uploadRecipeAPI} from '../api/user'
     tools:'',
     photo:'',
   })
-
-
 
 
   //方法

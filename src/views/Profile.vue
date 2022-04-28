@@ -21,12 +21,15 @@ onMounted(() => {
 //computed
 
 //methods
-
+function exit(){
+    
+}
 //watch
 
 </script>
 <template>
     <div>
+            <div class="icon-btn" i-mdi-exit-to-app @click="exit"></div>
         <div id="usr-profile">
             <div class="info">
                 <h1>2333</h1>

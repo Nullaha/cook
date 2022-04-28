@@ -1,8 +1,8 @@
 <script setup>
 import { computed, onMounted, watch, watchEffect } from "@vue/runtime-core";
 import recipeData from "../data/recipes.json";
-import { getRecipeAPI } from "../api/home";
-import { getRecipeDetailsAPI } from '../api/home';
+import { getRecipeAPI,getRecipeDetailsAPI } from "../api/home";
+
 
 import { useRouter, useRoute, onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 //变量

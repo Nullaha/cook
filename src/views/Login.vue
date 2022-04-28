@@ -1,28 +1,60 @@
 <script setup>
+import {ref} from 'vue'
+import {loginAPI} from '../api/user'
+import { useRouter,useRoute } from 'vue-router';
+import { mainStore } from '../store';
+import { storeToRefs } from 'pinia';
+import {Session} from '../util/cache'
+import {printMsg} from '../util/printMsg' //test
+const router = useRouter()
+const route = useRoute()
+const store = mainStore()
+    
 
+    const loginForm = ref(null)
+    function login(){
+        debugger
+        console.log(loginForm.value)
+        const formData = new FormData(loginForm.value)
+        printMsg.printFormData(formData) //test
+        loginAPI(formData).then(res=>{
+            console.log(res);
+            if(!res.success){//登录不成功
+                console.log(res.msg);
+            }
+            //TODO:
+            // 先用sessionstorage存，再跳转路由
+            Session.set('token',res.token)
+            store.setTokenValue(res.token)
+            router.push({ path: route.query.redirect || '/' })
+        })
+    }
 </script>
 
 <template>
     <div class="form px-3" id="login">
 
-        <input type="hidden" name="ga_id" class="js-octo-ga-id-input">
-        <div class="auth-form-header p-0">
+        <!-- <input type="hidden" name="ga_id" class="js-octo-ga-id-input"> -->
+        <div class="p-0">
             <h1>1111</h1>
         </div>
         <div class="form-body" m="t-3">
-            <form data-turbo="false" action="/session" accept-charset="UTF-8" method="post">
+            <form ref="loginForm">
                 <label for="login_field">Username or email address</label>
-                <input type="text" name="login" id="login_field" class="form-control input-block js-login-field"
+                <input type="text" name="account" id="account" class="form-control input-block js-login-field"
                     autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus">
 
                 <div class="position-relative">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password"
+                    <input type="password" name="pwd" id="pwd"
                         class="form-control form-control input-block js-password-field" autocomplete="current-password">
 
-                    <input type="submit" name="commit" value="Sign in"
+                    <!-- <input type="submit" name="commit" value="Sign in"
                         class="btn btn-primary btn-block js-sign-in-button" data-disable-with="Signing in…"
-                        data-signin-label="Sign in" development="false">
+                        data-signin-label="Sign in" development="false"> -->
+                    <button @click.prevent="login" value="Sign in"
+                        class="btn btn-primary btn-block js-sign-in-button" data-disable-with="Signing in…"
+                        data-signin-label="Sign in" development="false">Sign in</button>
 
                     <!-- <a class="label-link position-absolute top-0 right-0" tabindex="0" href="/password_reset">忘记密码</a> -->
                 </div>
@@ -30,7 +62,7 @@
         </div>
 
         <p class="login-callout" m="t-3">
-            New to GitHub?
+            注册账号?
             <a data-ga-click="Sign in, switch to sign up"
                 href="/signup?source=login">Create an account</a>.
         </p>

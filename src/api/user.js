@@ -3,13 +3,20 @@ import {defineStore} from 'pinia'
 
 //登录
 export function loginAPI(data){
-    return request({
-        url:'/user/login',
-        methods:'post',
-        data,
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
+    // return request({
+    //     url:'/user/login',
+    //     methods:'post',
+    //     data,
+    //     headers: {
+    //         'Content-Type': 'multipart/form-data'
+    //     },
+    // })
+    return new Promise((resolve,reject)=>{
+        resolve({
+            "success" : true,
+            "msg":"登录成功",
+            "token":'wo-shi-token'
+        })
     })
 }
 
@@ -44,7 +51,6 @@ export function updateInfo(data){
 
 //上传菜谱
 export function uploadRecipeAPI(data){
-    debugger
     console.log(data);
     return request({
         method:'post',
