@@ -5,12 +5,12 @@
     const props = defineProps({
         // dish:Object,
         // path:String,
-        active:Boolean,
+        active:Boolean
     })
 
 </script>
 <template>
-    <span class="tag rounded" m="2"
+    <span class="tag rounded relative" m="2"
         border="red-200"
         :bg="active?'red-500 opacity-90' :''"
         :text="active ? 'red-100' : ''"

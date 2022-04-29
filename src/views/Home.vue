@@ -117,6 +117,7 @@ watchEffect(() => {
 })
 </script>
 <template>
+<div class="home">
   <!-- <p>home</p> -->
   <div style="width:180px;display:inline-block">
     <input type="text" placeholder="输入菜名" class="placeholder:text-center" v-model="searchText" @focus="focusDiv()"
@@ -157,6 +158,7 @@ watchEffect(() => {
 
   <!-- <el-button>anni</el-button>
   <button m="t-4" bg="green-600">unocss</button> -->
+</div>
 </template>
 
 

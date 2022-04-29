@@ -57,7 +57,6 @@ const router = createRouter({
 
 //登录鉴权
 router.beforeEach((to, from, next) => {
-    debugger
     if (to.matched.some(record => record.meta.requireLogin)) { // 判断该路由是否需要登录权限
       if (Session.get('token')) { // 判断当前用户是否登录
           next()

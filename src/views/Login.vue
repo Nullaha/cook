@@ -13,7 +13,6 @@ const store = mainStore()
 
     const loginForm = ref(null)
     function login(){
-        debugger
         console.log(loginForm.value)
         const formData = new FormData(loginForm.value)
         printMsg.printFormData(formData) //test
@@ -40,7 +39,7 @@ const store = mainStore()
         </div>
         <div class="form-body" m="t-3">
             <form ref="loginForm">
-                <label for="login_field">Username or email address</label>
+                <label for="login_field">Email address</label>
                 <input type="text" name="account" id="account" class="form-control input-block js-login-field"
                     autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus">
 
@@ -61,11 +60,11 @@ const store = mainStore()
             </form>
         </div>
 
-        <p class="login-callout" m="t-3">
+        <!-- <p class="login-callout" m="t-3">
             注册账号?
             <a data-ga-click="Sign in, switch to sign up"
                 href="/signup?source=login">Create an account</a>.
-        </p>
+        </p> -->
 
     </div>
 </template>

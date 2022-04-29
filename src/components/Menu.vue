@@ -4,7 +4,7 @@
     
 </script>
 <template>
-    <nav p="y-6">
+    <nav p="y-4">
         <router-link  class="menu-btn" to="/home" title="首页">
             <div class="icon" i-ri-home-3-line/>
             首页
@@ -30,5 +30,15 @@
 .icon{
     width: 1.5em;
     height: 1.5em;
+}
+nav{
+    height: 22px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 5%);
 }
 </style>

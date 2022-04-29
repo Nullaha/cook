@@ -59,6 +59,8 @@ const store = mainStore()
 </script>
 
 <template>
+<dir class="upload">
+
   <button v-if="noUploadIng" class="btn" @click="toggleMode()">+</button>
   <div class="uploadDiv" v-else>
     <button class="" @click="toggleMode()">x</button>
@@ -82,6 +84,7 @@ const store = mainStore()
       <button class="" @click="upload()">上传这道菜</button>
     </form>
   </div>
+</dir>
 </template>
 
 

@@ -9,7 +9,9 @@
 
   <Menu/>
     <!-- <HelloWorld msg="Hello Vue 3 + Vite" /> -->
-    <router-view />
+
+      <router-view style="margin-top:54px;" />
+
 </div>
 </template>
 

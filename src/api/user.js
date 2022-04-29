@@ -13,18 +13,24 @@ export function loginAPI(data){
     // })
     return new Promise((resolve,reject)=>{
         resolve({
-            "success" : true,
-            "msg":"登录成功",
-            "token":'wo-shi-token'
+            success : true,
+            msg:"登录成功",
+            token:'wo-shi-token'
         })
     })
 }
 
 //退出
 export function exitAPI(){
-    return request({
-        url:'/user/exit',
-        methods:'post',
+    // return request({
+    //     url:'/user/exit',
+    //     methods:'post',
+    // })
+    return new Promise((resolve,reject)=>{
+        resolve({
+            success : true,
+            msg:"退出登陆成功"
+        })
     })
 }
 
